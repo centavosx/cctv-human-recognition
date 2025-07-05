@@ -1,0 +1,26 @@
+[project]
+name = "blip-image-to-text"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Vincent Llanto",email = "cent.llanto@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "transformers (>=4.53.1,<5.0.0)",
+    "requests (>=2.32.4,<3.0.0)",
+    "pillow (>=11.3.0,<12.0.0)",
+    "torch (>=2.7.1,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "blip_image_to_text", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "blip_image_to_text.main:main"
