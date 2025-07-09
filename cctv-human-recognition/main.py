@@ -2,6 +2,7 @@ import argparse
 
 from .classes import Camera
 from .utils import parse_dict, array_unique_by_key
+from .constants import DEFAULT_CAMERA_PORT, DEFAULT_CHANNEL
 
 import multiprocessing as mp
 
@@ -28,7 +29,7 @@ def get_args():
         type=str,
         required=False,
         help='''
-            Global username used for devices
+            Global username used in device auth
         '''
     )
     parser.add_argument(
@@ -36,7 +37,7 @@ def get_args():
         type=str,
         required=False,
         help='''
-            Global password used for devicess
+            Global password used in device auth
         '''
     )
     parser.add_argument(
@@ -44,7 +45,7 @@ def get_args():
         type=str,
         required=False,
         help='''
-            Global port used for devices
+            Global port used in your devices
         '''
     )
     parser.add_argument(
@@ -59,8 +60,8 @@ def get_args():
 
     global_user = args.global_user
     global_password = args.global_password
-    global_channel = args.global_channel if args.global_channel is not None else 101
-    global_port = args.global_port if args.global_port is not None else 554
+    global_channel = args.global_channel if args.global_channel is not None else DEFAULT_CHANNEL
+    global_port = args.global_port if args.global_port is not None else DEFAULT_CAMERA_PORT
 
     new_ip_data: list[dict[str, str]]  = [{
         "username": item.user if "user" in item else global_user,

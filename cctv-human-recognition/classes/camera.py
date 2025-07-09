@@ -52,9 +52,9 @@ class Camera:
     def detect_humans(self, frame):
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # Usually frame from VideoCapture is BGR
         boxes, weights = self.__hog.detectMultiScale(gray, winStride=(8, 8))
-
         return boxes, weights
 
+    #TODO - Convert it to hls to allow streaming in web/mobile
     def read(self):
         ret, frame = self.__capture.read()
 
@@ -63,11 +63,11 @@ class Camera:
             time.sleep(1)
             self.__capture = cv2.VideoCapture(self.__rtsp_url, cv2.CAP_FFMPEG)
             return
+
         frame = cv2.resize(frame, (640, 480))
-
         boxes, weights = self.throttle.call(self.detect_humans, frame)
-
         for (x, y, w, h) in boxes:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
         cv2.imshow(self.ip, frame)
+
