@@ -17,3 +17,6 @@
 
 .venv
 /poetry.toml
+
+graph.pb
+output

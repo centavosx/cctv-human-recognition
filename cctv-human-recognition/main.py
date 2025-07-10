@@ -1,10 +1,13 @@
 import argparse
+import os
 
-from .classes import Camera
+from .classes import Camera, Tensor
 from .utils import parse_dict, array_unique_by_key
 from .constants import DEFAULT_CAMERA_PORT, DEFAULT_CHANNEL
 
 import multiprocessing as mp
+
+os.makedirs('output', exist_ok=True)
 
 def get_args():
     parser = argparse.ArgumentParser()
