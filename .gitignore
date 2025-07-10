@@ -18,5 +18,5 @@
 .venv
 /poetry.toml
 
-graph.pb
+*.pb
 output
