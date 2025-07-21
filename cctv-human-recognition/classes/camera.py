@@ -33,11 +33,11 @@ class Camera:
             '-r', '25',
             '-i', '-',
             '-c:v', 'libx264',
-            '-preset', 'veryfast',
+            '-preset', 'ultrafast',
             '-f', 'hls',
-            '-hls_time', '2',
-            '-hls_list_size', '5',
-            '-hls_flags', 'delete_segments',
+            '-hls_time', '0.5',
+            '-hls_list_size', '3',
+            '-hls_flags', 'delete_segments+append_list+omit_endlist',
             os.path.join(output_dir, 'stream.m3u8')
         ], stdin=subprocess.PIPE)
 
